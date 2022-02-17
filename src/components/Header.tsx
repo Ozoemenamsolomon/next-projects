@@ -1,55 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, SVGProps, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
-import {
-  BookmarkAltIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  MenuIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  XIcon,
-} from '@heroicons/react/outline';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import { useRouter } from 'next/router';
 
-const solutions = [
-  {
-    name: 'Analytics',
-    description:
-      'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: ChartBarIcon,
-  },
-];
+const solutions: {
+  name: string;
+  description: string;
+  href: string;
+  icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+}[] = [];
 
-const resources = [
-  {
-    name: 'Help Center',
-    description:
-      'Get all of your questions answered in our forums or contact support.',
-    href: '#',
-    icon: SupportIcon,
-  },
-  {
-    name: 'Guides',
-    description:
-      'Learn how to maximize our platform to get the most out of it.',
-    href: '#',
-    icon: BookmarkAltIcon,
-  },
-  {
-    name: 'Events',
-    description:
-      'See what meet-ups and other events we might be planning near you.',
-    href: '#',
-    icon: CalendarIcon,
-  },
-  {
-    name: 'Security',
-    description: 'Understand how we take your privacy seriously.',
-    href: '#',
-    icon: ShieldCheckIcon,
-  },
+const navLinks = [
+  { name: 'Home', href: '/' },
+  { name: 'Latest', href: '#' },
+  { name: 'Resources', href: '#' },
+  { name: 'About Us', href: '#' },
 ];
 
 function classNames(...classes: string[]) {
@@ -71,17 +38,24 @@ export default function Example() {
     };
   }, []);
 
+  const router = useRouter();
+
   return (
     <Popover className=" w-full text-white fixed top-0 z-50 ">
       <div
         className={
-          'container ' + `${animateHeader && 'bg-black/20 backdrop-blur-sm'}`
+          'container transition duration-100 ' +
+          `${
+            animateHeader
+              ? 'bg-black/20 backdrop-blur-sm'
+              : 'bg-transparent backdrop-blur-none'
+          }`
         }
       >
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1 space-x-10">
-            <a href="#">
-              <span className="sr-only">Workflow</span>
+            <a href="/">
+              <span className="sr-only">Logo</span>
               <img
                 className="h-8 w-auto sm:h-10"
                 src="/REHABICA-Logo-BLUE.png"
@@ -89,24 +63,26 @@ export default function Example() {
               />
             </a>
             <Popover.Group as="nav" className="hidden md:flex space-x-10">
-              <a href="/" className="text-base font-medium ">
-                Home
-              </a>
-              <a href="#" className="text-base font-medium ">
-                Latest
-              </a>
-              <a href="#" className="text-base font-medium ">
-                Resources
-              </a>
-              <a href="#" className="text-base font-medium ">
-                About Us
-              </a>
-              <Popover className="relative">
+              {navLinks.map(({ name, href }) => (
+                <div className="flex items-center ">
+                  <a
+                    href={href}
+                    className={
+                      'text-base font-medium rounded-full py-1 px-2 outline-2 outline-[#02f3ae] ' +
+                      `${router.pathname === href ? 'outline' : ''}`
+                    }
+                  >
+                    {name}
+                  </a>
+                </div>
+              ))}
+
+              <Popover className="relative flex items-center">
                 {({ open }) => (
                   <>
                     <Popover.Button
                       className={classNames(
-                        'bg-transparent rounded-md inline-flex items-center text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#14395e]'
+                        'rounded-full py-1 px-2 bg-transparent inline-flex items-center text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#02f3ae]'
                       )}
                     >
                       <span>Global Calender</span>
@@ -118,7 +94,6 @@ export default function Example() {
                         aria-hidden="true"
                       />
                     </Popover.Button>
-
                     <Transition
                       as={Fragment}
                       enter="transition ease-out duration-200"
@@ -128,7 +103,7 @@ export default function Example() {
                       leaveFrom="opacity-100 translate-y-0"
                       leaveTo="opacity-0 translate-y-1"
                     >
-                      <Popover.Panel className="absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
+                      <Popover.Panel className="absolute top-6 z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
                         <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                           <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                             {solutions.map((item) => (
@@ -199,42 +174,10 @@ export default function Example() {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="mt-6">
-                <nav className="grid gap-y-8">
-                  {solutions.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                    >
-                      <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-[#14395e]"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        {item.name}
-                      </span>
-                    </a>
-                  ))}
-                </nav>
-              </div>
             </div>
             <div className="py-6 px-5 space-y-6">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Pricing
-                </a>
-
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Docs
-                </a>
-                {resources.map((item) => (
+                {navLinks.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
