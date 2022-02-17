@@ -1,13 +1,9 @@
 import React from 'react';
-import UIGirl from './UIGirl';
 
 const TwoCols = () => {
   return (
     <section className="bg-white py-8">
       <div className="container">
-        <div className="w-full mb-4">
-          <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
         <div className="flex flex-wrap">
           <div className="w-5/6 sm:w-1/2 p-6">
             <p className="mt-3 tracking-tight sm:mt-5 sm:max-w-xl sm:mx-auto md:mt-5 lg:mx-0 text-3xl sm:text-4xl md:text-5xl">
@@ -24,7 +20,7 @@ const TwoCols = () => {
             </p>
           </div>
           <div className="w-full sm:w-1/2 p-6">
-            <UIGirl />
+            <img src="/partners-network-updated.svg" alt="" />
           </div>
         </div>
       </div>
