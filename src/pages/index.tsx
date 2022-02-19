@@ -20,7 +20,7 @@ const events = [
 const webinars = [
   {
     title: "Africa NXT '22.",
-    href: '#',
+    href: 'https://fb.watch/bbP_LuBKEC/',
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
@@ -30,7 +30,7 @@ const webinars = [
 const podcasts = [
   {
     title: "Africa NXT '22.",
-    href: '#',
+    href: 'https://open.spotify.com/show/6bbomx0szUkRPy4qLaUhxi?si=3vVFZthETaubKczauygNGg&utm_source=copy-link',
     imageSrc:
       'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
