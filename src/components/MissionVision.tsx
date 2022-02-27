@@ -3,7 +3,7 @@ import React from 'react';
 const MissionVision = () => {
   return (
     <div className="container py-8 space-y-14">
-      <div>
+      <div className="pt-16 sm:pt-24" id="vision">
         <h1 className="uppercase text-3xl sm:text-4xl md:text-5xl font-bold">
           Vision
         </h1>
@@ -12,7 +12,7 @@ const MissionVision = () => {
           Africa
         </p>
       </div>
-      <div>
+      <div className="pt-16 sm:pt-24" id="mission">
         <h1 className="uppercase text-3xl sm:text-4xl md:text-5xl font-bold">
           MISSION
         </h1>

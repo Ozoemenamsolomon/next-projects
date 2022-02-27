@@ -10,7 +10,7 @@ const Grid: FC<{
   }[];
 }> = ({ items, title }) => {
   return (
-    <div className="bg-white">
+    <div id={title} className="bg-white">
       <div className="container py-16 sm:py-24">
         <h2 className="uppercase text-3xl sm:text-4xl md:text-5xl font-bold">
           {title}

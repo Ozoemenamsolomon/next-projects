@@ -1,27 +1,18 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, SVGProps, useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { ChevronDownIcon } from '@heroicons/react/solid';
 import { useRouter } from 'next/router';
-
-const solutions: {
-  name: string;
-  description: string;
-  href: string;
-  icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
-}[] = [];
 
 const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Latest', href: '#' },
-  { name: 'Resources', href: '#' },
-  { name: 'About Us', href: '#' },
+  { name: 'Vision', href: '#vision' },
+  { name: 'Mission', href: '#mission' },
+  { name: 'Events', href: '#events' },
+  { name: 'Webinars', href: '#webinars' },
+  { name: 'Podcast', href: '#podcasts' },
+  { name: 'Contact Us', href: '#contact-us' },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export default function Example() {
   const [animateHeader, setAnimateHeader] = useState(false);
@@ -62,7 +53,7 @@ export default function Example() {
                 alt=""
               />
             </a>
-            <Popover.Group as="nav" className="hidden md:flex space-x-10">
+            <nav className="hidden md:flex space-x-10">
               {navLinks.map(({ name, href }) => (
                 <div className="flex items-center ">
                   <a
@@ -76,64 +67,7 @@ export default function Example() {
                   </a>
                 </div>
               ))}
-
-              <Popover className="relative flex items-center">
-                {({ open }) => (
-                  <>
-                    <Popover.Button
-                      className={classNames(
-                        'rounded-full py-1 px-2 bg-transparent inline-flex items-center text-base font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#02f3ae]'
-                      )}
-                    >
-                      <span>Global Calender</span>
-                      <ChevronDownIcon
-                        className={classNames(
-                          open ? 'text-gray-600' : 'text-gray-400',
-                          'ml-2 h-5 w-5 '
-                        )}
-                        aria-hidden="true"
-                      />
-                    </Popover.Button>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-200"
-                      enterFrom="opacity-0 translate-y-1"
-                      enterTo="opacity-100 translate-y-0"
-                      leave="transition ease-in duration-150"
-                      leaveFrom="opacity-100 translate-y-0"
-                      leaveTo="opacity-0 translate-y-1"
-                    >
-                      <Popover.Panel className="absolute top-6 z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2">
-                        <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                          <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                            {solutions.map((item) => (
-                              <a
-                                key={item.name}
-                                href={item.href}
-                                className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
-                              >
-                                <item.icon
-                                  className="flex-shrink-0 h-6 w-6 text-[#14395e]"
-                                  aria-hidden="true"
-                                />
-                                <div className="ml-4">
-                                  <p className="text-base font-medium text-gray-900">
-                                    {item.name}
-                                  </p>
-                                  <p className="mt-1 text-sm text-gray-500">
-                                    {item.description}
-                                  </p>
-                                </div>
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      </Popover.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Popover>
-            </Popover.Group>
+            </nav>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
             <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#14395e]">
@@ -186,20 +120,6 @@ export default function Example() {
                     {item.name}
                   </a>
                 ))}
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[#14395e] hover:bg-[#14395e]"
-                >
-                  Sign up
-                </a>
-                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                  Existing customer?{' '}
-                  <a href="#" className="text-[#14395e] hover:text-[#14395e]">
-                    Sign in
-                  </a>
-                </p>
               </div>
             </div>
           </div>

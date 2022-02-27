@@ -8,3 +8,7 @@
   --bg: #0151fe;
   --link: #0855ff;
 }
+
+html {
+  scroll-behavior: smooth;
+}
