@@ -16,11 +16,16 @@ const Grid: FC<{
           {title}
         </h2>
         {/* <h3 className="text-l sm:text-2xl md:text-3xl">past</h3> */}
-        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {items.map(({ href, imageAlt, imageSrc, title }, id) => (
             <div key={title + id} className="group relative">
-              <a target="_blank" data-key={title + id} href={href}>
-                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+              <a
+                target="_blank"
+                rel="noreferrer"
+                data-key={title + id}
+                href={href}
+              >
+                <div className="w-full min-h-80 bg-gray-200 aspect-w-2 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80">
                   <img
                     src={imageSrc}
                     alt={imageAlt}

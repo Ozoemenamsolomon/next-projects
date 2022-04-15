@@ -14,6 +14,7 @@ const TwoCols = () => {
                 className="text-[#0151fe] hover:underline text-l sm:text-2xl md:text-3xl"
                 href="https://chat.whatsapp.com/IkocP2W4Eu8Gat4bl3VpNw"
                 target="_blank"
+                rel="noreferrer"
               >
                 Join us.
               </a>

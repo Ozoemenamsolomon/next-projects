@@ -139,8 +139,8 @@ const ConnectedWorld = () => {
         fill="none"
         opacity=".8"
         stroke="#ff6347"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       />
       <path
         transform="translate(-11.697 -13.011)"
@@ -148,8 +148,8 @@ const ConnectedWorld = () => {
         fill="none"
         opacity=".8"
         stroke="#ff6347"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       />
       <circle cx="214.07" cy="310.65" r="11.968" fill="#ff6347" />
       <circle cx="322.2" cy="566.52" r="11.968" fill="#ff6347" />

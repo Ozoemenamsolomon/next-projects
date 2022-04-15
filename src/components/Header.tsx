@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -45,26 +46,29 @@ export default function Example() {
       >
         <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1 space-x-10">
-            <a href="/">
-              <span className="sr-only">Logo</span>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="/REHABICA-Logo-BLUE.png"
-                alt=""
-              />
-            </a>
-            <nav className="hidden md:flex space-x-10">
-              {navLinks.map(({ name, href }) => (
-                <div className="flex items-center ">
-                  <a
-                    href={href}
-                    className={
-                      'text-base font-medium rounded-full py-1 px-2 outline-2 outline-[#02f3ae] ' +
-                      `${router.pathname === href ? 'outline' : ''}`
-                    }
-                  >
-                    {name}
-                  </a>
+            <Link href="/">
+              <a>
+                <span className="sr-only">Logo</span>
+                <img
+                  className="h-8 w-auto sm:h-10"
+                  src="/REHABICA-Logo-BLUE.png"
+                  alt=""
+                />
+              </a>
+            </Link>
+            <nav className="hidden md:flex space-x-5">
+              {navLinks.map(({ name, href }, id) => (
+                <div key={`navlink-_${id}`} className="flex items-center ">
+                  <Link href={href}>
+                    <a
+                      className={
+                        'text-base font-medium rounded-full py-1 px-2 outline-2 outline-[#02f3ae] ' +
+                        `${router.pathname === href ? 'outline' : ''}`
+                      }
+                    >
+                      {name}
+                    </a>
+                  </Link>
                 </div>
               ))}
             </nav>
